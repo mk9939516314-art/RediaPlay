@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#050506">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Redia Play</title>
+<link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0014 0M12 18v3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l14 8-14 8V4z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/><rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/></symbol>
+    <symbol id="i-rw" viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 11-5 5H5a7 7 0 107-7z" fill="currentColor"/></symbol>
+    <symbol id="i-fw" viewBox="0 0 24 24"><path d="M12 5V2l5 4-5 4V7a5 5 0 105 5h2a7 7 0 10-7-7z" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.5-9C.7 7.6 2.6 4 6.3 4 8.6 4 10.6 5.3 12 7c1.4-1.7 3.4-3 5.7-3 3.7 0 5.6 3.6 3.8 7-2.5 4.6-9.5 9-9.5 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.5-9C.7 7.6 2.6 4 6.3 4 8.6 4 10.6 5.3 12 7c1.4-1.7 3.4-3 5.7-3 3.7 0 5.6 3.6 3.8 7-2.5 4.6-9.5 9-9.5 9z" fill="currentColor"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M17 8a5 5 0 010 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pip" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12" y="12" width="7" height="5" rx="1" fill="currentColor"/></symbol>
+    <symbol id="i-cc" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5c-1.2 0-2 .8-2 2.2s.8 2.2 2 2.2M15.5 10.5c-1.2 0-2 .8-2 2.2s.8 2.2 2 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-audio" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0118 0M6 12a6 6 0 0112 0M6 12v5a2 2 0 01-2 2H3v-7h1M18 12v5a2 2 0 002 2h1v-7h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h13M21 18h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="6" r="2" fill="currentColor"/><circle cx="9" cy="12" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="currentColor"/><rect x="13" y="3" width="8" height="8" rx="1.5" fill="currentColor"/><rect x="3" y="13" width="8" height="8" rx="1.5" fill="currentColor"/><rect x="13" y="13" width="8" height="8" rx="1.5" fill="currentColor"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-playlist" viewBox="0 0 24 24"><path d="M4 6h11M4 12h11M4 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M20 13v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4V8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-crop" viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 002 2h14M18 22V8a2 2 0 00-2-2H2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M17.65 6.35A8 8 0 106.35 17.65" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 4v6h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6M12 7.5h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-queue" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 15v6M16 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 15l6-6M8 17l-2.5 2.5a3.5 3.5 0 01-5-5L3 12M16 9l2.5-2.5a3.5 3.5 0 015 5L21 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- these two must stay OUTSIDE every .screen div — a .screen goes
+     display:none when it's not the active one, and any <label for=...>
+     pointing at an input buried inside a hidden screen stops working the
+     moment you navigate away from that screen (this was the real, exact
+     cause of Add Videos / Add Folder failing everywhere except Home). -->
+<input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+<input type="file" id="fileInput" accept="video/*" multiple hidden>
+
+  <!-- ===== HOME ===== -->
+  <div id="homeScreen" class="screen active">
+    <div class="bg-orbs"><span></span><span></span><span></span></div>
+    <header class="topbar glass">
+      <div class="greeting">
+        <div class="greet-text" id="greetText">Welcome back</div>
+        <div class="brand-name">Redia<span class="accent">Play</span></div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" data-nav="searchScreen"><svg class="ic"><use href="#i-search"/></svg></button>
+        <button class="icon-btn" id="addLinkBtn" title="Play from a link"><svg class="ic"><use href="#i-link"/></svg></button>
+        <label class="icon-btn accent-btn" id="addFolderBtn" for="fileInput" title="Add videos"><svg class="ic"><use href="#i-plus"/></svg></label>
+      </div>
+    </header>
+
+    <div id="addLinkModal" class="modal-overlay hidden">
+      <div class="modal-card glass">
+        <div class="pop-title">Play from a link</div>
+        <input type="text" id="addLinkInput" placeholder="Paste any video link...">
+        <div id="linkPreview" class="link-preview hidden">
+          <img id="linkPreviewImg">
+          <div class="link-preview-info">
+            <div id="linkPreviewTitle"></div>
+            <div id="linkPreviewSource"></div>
+          </div>
+        </div>
+        <p class="tab-hint" id="addLinkHint">Direct video file links (.mp4, .m3u8, NAS/cloud direct links) play with full controls + download. YouTube / Vimeo / Instagram / Facebook / TikTok links play via their own official embedded player. X/Twitter, Twitch and Reddit embeds are best-effort.</p>
+        <div class="modal-actions">
+          <button id="addLinkCancel" class="ghost-btn small">Cancel</button>
+          <button id="addLinkPlay" class="primary-btn small">Play</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="homeContent">
+      <section id="continueRow" class="row hidden">
+        <h2>Continue Watching</h2>
+        <div class="rail hero-rail" id="continueRail"></div>
+      </section>
+      <section id="recentRow" class="row hidden">
+        <h2>Recently Added</h2>
+        <div class="rail" id="recentRail"></div>
+      </section>
+      <section id="mostRow" class="row hidden">
+        <h2>Most Played</h2>
+        <div class="rail" id="mostRail"></div>
+      </section>
+      <section id="favRow" class="row hidden">
+        <h2>Favorites</h2>
+        <div class="rail" id="favRail"></div>
+      </section>
+      <section id="homeEmpty" class="empty-state">
+        <div class="empty-glow"></div>
+        <p>Your library is empty</p>
+        <label id="emptyAddBtn" class="primary-btn" for="fileInput">Add Videos</label>
+        <label id="emptyAddFolderBtn" class="ghost-btn" for="folderInput">Add a Folder</label>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===== LIBRARY ===== -->
+  <div id="libraryScreen" class="screen">
+    <header class="topbar glass">
+      <div class="brand-name">Library</div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="viewToggleBtn"><svg class="ic"><use href="#i-grid"/></svg></button>
+        <button class="icon-btn" id="multiSelectBtn"><svg class="ic"><use href="#i-check"/></svg></button>
+        <label class="icon-btn accent-btn" id="libAddBtn" for="fileInput" title="Add videos"><svg class="ic"><use href="#i-plus"/></svg></label>
+      </div>
+    </header>
+
+    <div class="chip-row">
+      <select id="sortSelect" class="chip-select">
+        <option value="dateAdded">Date Added</option>
+        <option value="name">Name (A-Z)</option>
+        <option value="nameDesc">Name (Z-A)</option>
+        <option value="duration">Duration</option>
+        <option value="size">File Size</option>
+        <option value="mostPlayed">Most Played</option>
+      </select>
+      <button class="chip" data-filter="all">All</button>
+      <button class="chip" data-filter="favorite">Favorites</button>
+      <button class="chip" data-filter="unwatched">Unwatched</button>
+      <button class="chip" data-filter="unfinished">Unfinished</button>
+    </div>
+
+    <div id="multiActionBar" class="multi-action-bar hidden">
+      <span id="selectCount">0 selected</span>
+      <div class="multi-actions">
+        <button id="bulkFavBtn" class="icon-btn small"><svg class="ic"><use href="#i-heart"/></svg></button>
+        <button id="bulkPlaylistBtn" class="icon-btn small"><svg class="ic"><use href="#i-playlist"/></svg></button>
+        <button id="bulkDeleteBtn" class="icon-btn small"><svg class="ic"><use href="#i-trash"/></svg></button>
+      </div>
+    </div>
+
+    <div id="libraryGrid" class="grid"></div>
+    <div id="libraryList" class="list-view hidden"></div>
+    <div id="libraryEmpty" class="empty-state">
+      <div class="empty-glow"></div>
+      <p>No videos yet</p>
+      <label id="libEmptyAddBtn" class="primary-btn" for="fileInput">Add Videos</label>
+      <label id="libEmptyAddFolderBtn" class="ghost-btn" for="folderInput">Add a Folder</label>
+    </div>
+  </div>
+
+  <!-- ===== SEARCH ===== -->
+  <div id="searchScreen" class="screen">
+    <header class="topbar glass">
+      <button class="icon-btn" data-nav="homeScreen"><svg class="ic"><use href="#i-back"/></svg></button>
+      <div class="search-input-wrap">
+        <svg class="ic dim"><use href="#i-search"/></svg>
+        <input type="text" id="searchInput" placeholder="Search your library...">
+        <button id="voiceSearchBtn" class="icon-btn small"><svg class="ic"><use href="#i-mic"/></svg></button>
+      </div>
+    </header>
+    <div id="recentSearches" class="row"></div>
+    <div id="searchResults" class="grid"></div>
+  </div>
+
+  <!-- ===== MUSIC ===== -->
+  <div id="musicScreen" class="screen">
+    <header class="topbar glass">
+      <svg class="ic dim"><use href="#i-search"/></svg>
+      <div class="search-input-wrap">
+        <input type="text" id="musicSearchInput" placeholder="Search for a song...">
+      </div>
+    </header>
+    <div id="youtubeKeyBanner" class="reconnect-banner hidden">
+      <span>Music search isn't set up yet — see the note at the top of js/music-engine.js.</span>
+    </div>
+    <div id="musicStatus" class="tab-hint" style="padding:0 20px 8px;"></div>
+    <div id="musicResults" class="list-view"></div>
+  </div>
+
+  <!-- ===== PLAYLISTS ===== -->
+  <div id="playlistsScreen" class="screen">
+    <header class="topbar glass">
+      <div class="brand-name">Playlists</div>
+      <button class="icon-btn accent-btn" id="createPlaylistBtn"><svg class="ic"><use href="#i-plus"/></svg></button>
+    </header>
+    <div id="playlistGrid" class="grid"></div>
+    <div id="playlistEmpty" class="empty-state"><p>No playlists yet</p></div>
+  </div>
+
+  <div id="playlistDetailScreen" class="screen">
+    <header class="topbar glass">
+      <button class="icon-btn" id="playlistBackBtn"><svg class="ic"><use href="#i-back"/></svg></button>
+      <div class="brand-name" id="playlistDetailTitle">Playlist</div>
+      <button class="icon-btn" id="deletePlaylistBtn"><svg class="ic"><use href="#i-trash"/></svg></button>
+    </header>
+    <div id="playlistDetailList" class="list-view"></div>
+  </div>
+
+  <!-- ===== SETTINGS (full page) ===== -->
+  <div id="settingsScreen" class="screen">
+    <header class="topbar glass">
+      <button class="icon-btn" data-nav="homeScreen"><svg class="ic"><use href="#i-back"/></svg></button>
+      <div class="brand-name">Settings</div>
+      <div style="width:40px"></div>
+    </header>
+    <div class="settings-page-body">
+      <div class="settings-group">
+        <h3>Appearance</h3>
+        <div class="setting-row"><label>Theme</label>
+          <div class="theme-swatches" id="themeSwatches"></div>
+        </div>
+        <div class="setting-row toggle-row"><label>Light mode</label><label class="switch"><input type="checkbox" id="lightModeToggle"><span class="slider-pill"></span></label></div>
+        <div class="setting-row toggle-row"><label>Dynamic ambient lighting</label><label class="switch"><input type="checkbox" id="setAmbient" checked><span class="slider-pill"></span></label></div>
+        <div class="setting-row toggle-row"><label>Reduce motion</label><label class="switch"><input type="checkbox" id="setReduceMotion"><span class="slider-pill"></span></label></div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Playback</h3>
+        <div class="setting-row toggle-row"><label>Remember speed per video</label><label class="switch"><input type="checkbox" id="setPerVideoSpeed" checked><span class="slider-pill"></span></label></div>
+        <div class="setting-row toggle-row"><label>Show "Up Next" prompt when a video ends</label><label class="switch"><input type="checkbox" id="setAutoNext" checked><span class="slider-pill"></span></label></div>
+        <div class="setting-row"><label>Default skip duration</label>
+          <select id="setSkipDuration" class="chip-select">
+            <option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option><option value="30">30s</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Gestures</h3>
+        <div class="setting-row toggle-row"><label>Swipe brightness/volume</label><label class="switch"><input type="checkbox" id="setGestureSwipe" checked><span class="slider-pill"></span></label></div>
+        <div class="setting-row toggle-row"><label>Long-press 2x speed</label><label class="switch"><input type="checkbox" id="setLongPressSpeed" checked><span class="slider-pill"></span></label></div>
+        <div class="setting-row toggle-row"><label>Haptic feedback</label><label class="switch"><input type="checkbox" id="setHaptics" checked><span class="slider-pill"></span></label></div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Network</h3>
+        <p class="tab-hint">Paste a direct HTTP(S) video link (works for NAS/cloud shares with a public HTTP URL).</p>
+        <div class="net-row"><input type="text" id="netUrlInput" placeholder="https://..."><button id="netPlayBtn" class="primary-btn small">Play</button></div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Storage</h3>
+        <div class="setting-row"><label>Videos remembered on this device</label>
+          <div class="tab-hint" id="storageUsageText">Calculating…</div>
+        </div>
+        <div class="setting-row"><label>Converted video cache</label><button id="clearCacheBtn" class="ghost-btn small">Clear cache</button></div>
+        <div class="setting-row"><label>Forget all remembered videos</label><button id="clearLibraryBtn" class="ghost-btn small">Clear library storage</button></div>
+      </div>
+
+      <div class="settings-group">
+        <h3>About</h3>
+        <div class="about-block">
+          <div class="about-app-name">Redia Play</div>
+          <div class="tab-hint">Version 3.2 · A fully local, offline-first video player. No accounts, no ads, no analytics, no data ever leaves your device — everything (your library, favorites, watch progress, bookmarks, settings) is stored only in this app's local storage on your phone.</div>
+        </div>
+        <div class="about-block">
+          <h4>Developer</h4>
+          <div class="tab-hint">REDSHOT</div>
+        </div>
+        <div class="about-block">
+          <h4>Support the developer</h4>
+          <div class="tab-hint">UPI: <b>9103093819@ptsbi</b></div>
+        </div>
+        <div class="about-block">
+          <h4>Terms & Conditions</h4>
+          <div class="tab-hint">
+            By using Redia Play, you agree: (1) This app only plays video files you select from your own device, or direct video links / official third-party embeds you choose to open — it does not host, distribute, or store any content itself. (2) You are responsible for having the right to view/possess any file or link you open in this app. (3) The app is provided "as is" without warranty; the developer is not liable for data loss, playback issues, or third-party link content. (4) The app does not collect, transmit, or sell any personal data — nothing is sent to any server. (5) Continued use of the app after an update means you accept the then-current terms. (6) This app does not download or extract content from platforms that restrict it (YouTube, Instagram, Facebook, TikTok, etc.) — such content plays only through those platforms' own official embedded players, subject to their own terms.
+          </div>
+        </div>
+        <div class="about-block">
+          <h4>Privacy Policy</h4>
+          <div class="tab-hint">Redia Play does not collect any personal data. No account, no login, no tracking, no third-party analytics SDKs. All app data (library metadata, favorites, watch history, bookmarks, playlists, settings) stays in local browser storage on your device and is never transmitted anywhere. Clearing app data/cache will erase it permanently.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PLAYER ===== -->
+  <div id="playerScreen" class="screen">
+    <div id="playerStage" class="player-stage">
+      <div id="ambientGlow" class="ambient-glow"></div>
+      <div id="videoWrap" class="video-wrap">
+        <video id="video" playsinline></video>
+        <iframe id="embedFrame" class="embed-frame hidden" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <!-- shown instead of a black screen when the current source has no video track -->
+      <div id="audioArtwork" class="audio-artwork hidden">
+        <div id="audioArtworkBg" class="audio-artwork-bg"></div>
+        <img id="audioArtworkImg" class="audio-artwork-img hidden">
+        <div id="audioArtworkFallback" class="audio-artwork-fallback"><svg class="ic xl"><use href="#i-music"/></svg></div>
+        <canvas id="visualizerCanvas" class="visualizer-canvas"></canvas>
+        <div id="audioArtworkTitle" class="audio-artwork-title"></div>
+      </div>
+      <canvas id="ambientCanvas" width="16" height="9" class="ambient-canvas hidden"></canvas>
+      <canvas id="shotCanvas" class="hidden"></canvas>
+
+      <div class="gesture-layer">
+        <div id="zoneLeft" class="gzone gzone-left"></div>
+        <div id="zoneCenter" class="gzone gzone-center"></div>
+        <div id="zoneRight" class="gzone gzone-right"></div>
+      </div>
+
+      <div id="flashOverlay" class="flash-overlay hidden"></div>
+      <div id="seekFlash" class="seek-flash glass"></div>
+      <div id="gestureIndicator" class="gesture-indicator glass hidden">
+        <div class="gi-icon" id="giIcon">🔆</div>
+        <div class="gi-bar"><div id="giFill" class="gi-fill"></div></div>
+      </div>
+      <div id="speedBoostBadge" class="speed-boost-badge hidden">2x</div>
+
+      <div id="convertOverlay" class="convert-overlay hidden">
+        <div class="convert-spinner"></div>
+        <div id="convertStatus" class="convert-status">Preparing video…</div>
+        <div class="convert-sub">Unsupported format detected — converting once, then it plays instantly next time.</div>
+      </div>
+
+      <div id="externalOpenOverlay" class="convert-overlay hidden">
+        <img id="externalThumb" class="external-thumb">
+        <div id="externalTitle" class="convert-status"></div>
+        <div class="convert-sub">This one plays through YouTube's own app/browser rather than inside this player.</div>
+        <button id="externalOpenBtn" class="primary-btn">Open & Play</button>
+      </div>
+
+      <button id="embedFallbackBtn" class="embed-fallback-btn hidden">Trouble playing? Open externally</button>
+
+      <div id="controlsOverlay" class="controls-overlay">
+        <div class="controls-top glass-strip">
+          <button id="backBtn" class="icon-btn"><svg class="ic"><use href="#i-back"/></svg></button>
+          <div class="now-playing-title" id="nowPlayingTitle">Title</div>
+          <button id="infoBtn" class="icon-btn"><svg class="ic"><use href="#i-info"/></svg></button>
+          <button id="pipBtn" class="icon-btn"><svg class="ic"><use href="#i-pip"/></svg></button>
+          <button id="playerSettingsBtn" class="icon-btn"><svg class="ic"><use href="#i-sliders"/></svg></button>
+        </div>
+
+        <div class="controls-center">
+          <button id="rewindBtn" class="center-btn"><svg class="ic lg"><use href="#i-rw"/></svg><span id="rwLabel">10</span></button>
+          <button id="playPauseBtn" class="center-btn play-btn"><svg class="ic xl"><use href="#i-play"/></svg></button>
+          <button id="forwardBtn" class="center-btn"><svg class="ic lg"><use href="#i-fw"/></svg><span id="fwLabel">10</span></button>
+        </div>
+
+        <div class="controls-bottom glass-strip">
+          <div id="highlightTrack" class="highlight-track"></div>
+          <div class="time-row">
+            <span id="currentTime">0:00</span>
+            <div class="seekbar-wrap">
+              <input type="range" id="seekbar" min="0" max="100" value="0" step="0.1">
+              <div id="bufferedBar" class="buffered-bar"></div>
+              <div id="seekThumbPreview" class="thumb-preview hidden"></div>
+            </div>
+            <span id="durationTime">0:00</span>
+          </div>
+          <div class="controls-row2">
+            <button id="speedBtn" class="pill-btn">1x</button>
+            <button id="displayModeBtn" class="icon-btn small"><svg class="ic"><use href="#i-crop"/></svg></button>
+            <button id="rotateBtn" class="icon-btn small"><svg class="ic"><use href="#i-rotate"/></svg></button>
+            <button id="subtitleBtn" class="icon-btn small"><svg class="ic"><use href="#i-cc"/></svg></button>
+            <button id="audioTrackBtn" class="icon-btn small"><svg class="ic"><use href="#i-audio"/></svg></button>
+            <button id="bookmarkBtn" class="icon-btn small"><svg class="ic"><use href="#i-bookmark"/></svg></button>
+            <button id="shotBtn" class="icon-btn small"><svg class="ic"><use href="#i-camera"/></svg></button>
+            <button id="favBtn" class="icon-btn small"><svg class="ic"><use href="#i-heart"/></svg></button>
+            <button id="downloadBtn" class="icon-btn small hidden"><svg class="ic"><use href="#i-network"/></svg></button>
+            <button id="queueBtn" class="icon-btn small"><svg class="ic"><use href="#i-queue"/></svg></button>
+            <button id="volumeBtn" class="icon-btn small"><svg class="ic"><use href="#i-volume"/></svg></button>
+            <button id="fullscreenBtn" class="icon-btn small"><svg class="ic"><use href="#i-expand"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- popovers -->
+      <div id="speedMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Speed</div>
+        <div class="speed-presets" id="speedPresets"></div>
+        <input type="range" id="speedSlider" min="0.1" max="4" step="0.05" value="1">
+        <div class="pop-row-between"><span id="speedVal">1.00x</span>
+          <label class="mini-toggle"><input type="checkbox" id="pitchPreserve" checked> Preserve pitch</label>
+        </div>
+      </div>
+
+      <div id="displayModeMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Display Mode</div>
+        <div class="pop-item" data-mode="contain">Fit</div>
+        <div class="pop-item" data-mode="cover">Fill</div>
+        <div class="pop-item" data-mode="fill">Stretch</div>
+        <div class="pop-item" data-mode="zoom">Zoom (1.5x)</div>
+        <div class="pop-item" data-mode="original">Original size</div>
+      </div>
+
+      <div id="subtitleMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Subtitles</div>
+        <div class="pop-item" id="loadSubtitleItem">＋ Load subtitle file (.vtt/.srt)</div>
+        <div id="subtitleTrackList"></div>
+        <div class="pop-title" style="margin-top:10px">Sync offset</div>
+        <input type="range" id="subDelay" min="-10" max="10" step="0.5" value="0">
+        <div class="pop-row-between"><span id="subDelayVal">0.0s</span></div>
+      </div>
+
+      <div id="audioTrackMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Audio</div>
+        <div id="audioTrackList"></div>
+        <div class="pop-title" style="margin-top:10px">EQ Preset</div>
+        <select id="eqPresetSelect" class="chip-select" style="width:100%">
+          <option value="flat">Flat</option>
+          <option value="bass">Bass Boost</option>
+          <option value="treble">Treble Boost</option>
+          <option value="vocal">Dialogue Boost</option>
+          <option value="movie">Movie</option>
+          <option value="night">Night Mode</option>
+        </select>
+        <div class="pop-row-between" style="margin-top:8px"><label class="mini-toggle"><input type="checkbox" id="eqMono"> Mono</label>
+          <label class="mini-toggle"><input type="checkbox" id="eqWide"> Wide Stereo</label>
+        </div>
+      </div>
+
+      <div id="bookmarkMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Bookmarks</div>
+        <button id="addBookmarkBtn" class="pop-item accent-text">＋ Bookmark this moment</button>
+        <div id="bookmarkList"></div>
+      </div>
+
+      <div id="queueMenu" class="pop-menu glass hidden">
+        <div class="pop-title">Up Next</div>
+        <div id="queueList"></div>
+      </div>
+
+      <div id="infoSheet" class="pop-menu glass hidden info-sheet">
+        <div class="pop-title">Video Info</div>
+        <div id="infoContent"></div>
+      </div>
+
+      <input type="file" id="subtitleInput" accept=".vtt,.srt" hidden>
+    </div>
+
+    <!-- player quick-settings drawer -->
+    <div id="settingsDrawer" class="settings-drawer glass hidden">
+      <div class="drawer-header">
+        <span>Color & Sound</span>
+        <button id="closeSettingsBtn" class="icon-btn small"><svg class="ic"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="drawer-tabs">
+        <button class="tab-btn active" data-tab="color">Color</button>
+        <button class="tab-btn" data-tab="audio">Audio</button>
+        <button class="tab-btn" data-tab="subs">Subtitles</button>
+      </div>
+      <div class="drawer-body">
+        <div class="tab-panel active" id="tab-color">
+          <div class="color-presets" id="colorPresets"></div>
+          <div class="setting-row"><label>Brightness</label><input type="range" id="setBrightness" min="50" max="150" value="100"></div>
+          <div class="setting-row"><label>Contrast</label><input type="range" id="setContrast" min="50" max="150" value="100"></div>
+          <div class="setting-row"><label>Saturation</label><input type="range" id="setSaturation" min="0" max="200" value="100"></div>
+          <div class="setting-row"><label>Warmth</label><input type="range" id="setWarmth" min="-50" max="50" value="0"></div>
+          <button id="resetColorBtn" class="ghost-btn small">Reset</button>
+        </div>
+        <div class="tab-panel" id="tab-audio">
+          <div class="setting-row"><label>Bass</label><input type="range" id="eqBass" min="-12" max="12" value="0"></div>
+          <div class="setting-row"><label>Mid</label><input type="range" id="eqMid" min="-12" max="12" value="0"></div>
+          <div class="setting-row"><label>Treble</label><input type="range" id="eqTreble" min="-12" max="12" value="0"></div>
+          <div class="setting-row"><label>Balance (L ↔ R)</label><input type="range" id="eqBalance" min="-1" max="1" step="0.1" value="0"></div>
+          <div class="setting-row toggle-row"><label>Smart Highlights</label><label class="switch"><input type="checkbox" id="setHighlights" checked><span class="slider-pill"></span></label></div>
+          <div class="setting-row"><label>Volume Boost — <span id="volumeBoostVal">100%</span></label><input type="range" id="volumeBoost" min="100" max="600" step="10" value="100"></div>
+        </div>
+        <div class="tab-panel" id="tab-subs">
+          <div class="setting-row"><label>Font size</label><input type="range" id="subSize" min="14" max="40" value="22"></div>
+          <div class="setting-row"><label>Background opacity</label><input type="range" id="subBg" min="0" max="100" value="60"></div>
+          <div class="setting-row"><label>Color</label>
+            <div class="swatch-row">
+              <span class="swatch active" style="background:#fff" data-color="#ffffff"></span>
+              <span class="swatch" style="background:#ffe14d" data-color="#ffe14d"></span>
+              <span class="swatch" style="background:#7cf0ff" data-color="#7cf0ff"></span>
+              <span class="swatch" style="background:#ff6b8b" data-color="#ff6b8b"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- sleep timer sheet -->
+    <div id="sleepToast" class="sleep-toast hidden"></div>
+
+    <!-- up next countdown (replaces silent auto-skip) -->
+    <div id="upNextCard" class="up-next-card glass hidden">
+      <img id="upNextThumb">
+      <div class="up-next-info">
+        <div class="up-next-label">Up Next</div>
+        <div id="upNextTitle">Video title</div>
+      </div>
+      <div class="up-next-actions">
+        <button id="upNextCancel" class="ghost-btn small">Cancel</button>
+        <button id="upNextPlay" class="primary-btn small">Play (<span id="upNextCountdown">10</span>s)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav id="bottomNav" class="bottom-nav glass">
+    <button class="nav-btn active" data-nav="homeScreen"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></button>
+    <button class="nav-btn" data-nav="libraryScreen"><svg class="ic"><use href="#i-grid"/></svg><span>Library</span></button>
+    <button class="nav-btn" data-nav="musicScreen"><svg class="ic"><use href="#i-music"/></svg><span>Music</span></button>
+    <button class="nav-btn" data-nav="searchScreen"><svg class="ic"><use href="#i-search"/></svg><span>Search</span></button>
+    <button class="nav-btn" data-nav="playlistsScreen"><svg class="ic"><use href="#i-playlist"/></svg><span>Playlists</span></button>
+    <button class="nav-btn" data-nav="settingsScreen"><svg class="ic"><use href="#i-settings"/></svg><span>Settings</span></button>
+  </nav>
+
+  <script src="js/format-engine.js?v=5"></script>
+  <script src="js/audio-engine.js?v=5"></script>
+  <script src="js/blob-store.js?v=5"></script>
+  <script src="js/music-engine.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+</body>
+</html>
